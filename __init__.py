@@ -7,7 +7,7 @@ from bpy.types import Operator
 
 bl_info = {
             "name": "Scripter",
-            "author": "Chris Conlan",
+            "author": "Matheus Fillipe",
             "version": (1, 0, 0),
             "blender": (2, 80, 0),
             "location": "TextEditor",
@@ -17,8 +17,11 @@ bl_info = {
 
 
 location=bpy.types.CONSOLE_HT_header
+locationTextEditor=bpy.types.TEXT_MT_text
 
 class BlenderController(bpy.types.Operator):
+    """"Runs the active script on the Text Editor on the Python Console"""
+
     bl_idname = "object.blendercontroller_operator"
     bl_label = "Run"
 
@@ -64,7 +67,8 @@ addon_keymaps = []
 def register():
     bpy.utils.register_class(BlenderController) 
     location.append(add_object_button)
-
+    locationTextEditor.append(add_object_button)
+    
     wm = bpy.context.window_manager
     km = wm.keyconfigs.addon.keymaps.new(name='Object Mode', space_type='EMPTY')
 
@@ -75,6 +79,8 @@ def register():
 def unregister():
     bpy.utils.unregister_class(BlenderController) 
     location.remove(add_object_button)
+    locationTextEditor.remove(add_object_button)
+
 
     for km, kmi in addon_keymaps:
         km.keymap_items.remove(kmi)
