@@ -14,8 +14,6 @@ bl_info = {
             "description": "Easilly run scripts directly on the Plender Python Console",
             "category": "Development",
 }
-
-
 location=bpy.types.CONSOLE_HT_header
 locationTextEditor=bpy.types.TEXT_MT_text
 
