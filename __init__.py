@@ -41,6 +41,7 @@ class BlenderController(bpy.types.Operator):
                 override['area'] = area
                 bpy.ops.screen.screen_full_area(override, use_hide_panels=True)
 
+
                 print(context.area, override['area'])
                 print(context.screen, override['screen'])
                 print(context.window, override['window'])
