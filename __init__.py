@@ -18,10 +18,10 @@ location=bpy.types.CONSOLE_HT_header
 locationTextEditor=bpy.types.TEXT_MT_text
 
 class BlenderController(bpy.types.Operator):
-    """"Runs the active script on the Text Editor on the Python Console"""
-
     bl_idname = "object.blendercontroller_operator"
     bl_label = "Run"
+    bl_description = "Runs the active script on the Text Editor on the Python Console"
+
 
     def execute(self, context):
         current=None
