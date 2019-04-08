@@ -1,6 +1,7 @@
 import sys
 import os
 import bpy
+#import .execute
 
 
 from bpy.types import Operator 
@@ -38,11 +39,13 @@ class BlenderController(bpy.types.Operator):
                 override['space_data'] = area.spaces.active
                 override['region'] = area.regions[-1]
                 override['area'] = area
+                bpy.ops.screen.screen_full_area(override, use_hide_panels=True)
 
-              #  print(context.area, override['area'])
-              #  print(context.screen, override['screen'])
-              #  print(context.window, override['window'])
+                print(context.area, override['area'])
+                print(context.screen, override['screen'])
+                print(context.window, override['window'])
                 override['screen'] = context.screen
+                override["area"] = context.area
                
 
 
@@ -67,8 +70,7 @@ def register():
     bpy.utils.register_class(BlenderController) 
     location.append(add_object_button)
     locationTextEditor.append(add_object_button)
-    
-   
+      
     wm = bpy.context.window_manager   
     km = wm.keyconfigs.addon.keymaps.new(name='Window', region_type='WINDOW', space_type='EMPTY')
 
