@@ -68,12 +68,12 @@ def register():
     location.append(add_object_button)
     locationTextEditor.append(add_object_button)
     
-    wm = bpy.context.window_manager
-    km = wm.keyconfigs.addon.keymaps.new(name='Object Mode', space_type='EMPTY')
-
+   
+    wm = bpy.context.window_manager   
+    km = wm.keyconfigs.addon.keymaps.new(name='Window', region_type='WINDOW', space_type='EMPTY')
+    addon_keymaps.append((km, kmi))
     kmi = km.keymap_items.new(BlenderController.bl_idname, 'F9', 'PRESS', ctrl=False, shift=False)
 
-    addon_keymaps.append((km, kmi))
  
 def unregister():
     bpy.utils.unregister_class(BlenderController) 
